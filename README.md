@@ -24,7 +24,7 @@ Open a terminal in this folder.
 
 ### Tensorflow
 *Make sure that you are in the virtual environment.*
-- Run `pip install --upgrade tensorflow` to install tensorflow
+- Run `pip install --upgrade tensorflow` to install tensorflow. This project works with tensorflow 2.1
 - Verify the installation: `python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"`
 
 ### Required packages
@@ -34,7 +34,7 @@ Open a terminal in this folder.
 
 ### Run the code using your GPU (if you've got a good one)
 
-- Follow these [instructions](https://www.tensorflow.org/install/gpu)
+- Follow these [instructions](https://www.tensorflow.org/install/gpu) and install Cuda 10.1 and not 10.0 or 10.2!!
 - Instructions on how to install cuDNN because it's not written in the given
 website: [doc nvidia](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html)
 
