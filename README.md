@@ -32,9 +32,19 @@ Open a terminal in this folder.
 
 - Install requirements: `pip install -r requirements.txt`
 
+### Run the code using your GPU (if you've got a good one)
+
+- Follow these [instructions](https://www.tensorflow.org/install/gpu)
+- Instructions on how to install cuDNN because it's not written in the given
+website: [doc nvidia](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html)
+
 ### Mess around with the program
 *Make sure that you are in the virtual environment.*
 
+**Python code:**
+- `python gan.py`
+
+**Jupyter notebook:**
 - `ipython kernel install --user --name=.venv` install a kernel inside the environment, to use to run in the Jupyter notebook there
 - Run jupyter notebook: `jupyter notebook` (**and not `python -m jupyter notebook`!**)
 - Open `gan.ipynb`. Make sure that the kernel is selected when you open it (**.venv**). To change it, go to "Kernel", and then "Change kernel".
