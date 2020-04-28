@@ -197,7 +197,7 @@ def train(images, buffer_size, noise_dim, gen, dis, gen_opt, dis_opt, loss_func)
     noise = tf.random.normal([buffer_size, noise_dim])
 
     with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
-        generated_images = generator(noise, training=True)
+        generated_images = gen(noise, training=True)
 
         real_output = dis(images, training=True)
         fake_output = dis(generated_images, training=True)
@@ -205,10 +205,10 @@ def train(images, buffer_size, noise_dim, gen, dis, gen_opt, dis_opt, loss_func)
         gen_loss = generator_loss(loss_func, fake_output)
         disc_loss = discriminator_loss(loss_func, real_output, fake_output)
 
-        gradients_of_generator = gen_tape.gradient(gen_loss, generator.trainable_variables)
+        gradients_of_generator = gen_tape.gradient(gen_loss, gen.trainable_variables)
         gradients_of_discriminator = disc_tape.gradient(disc_loss, dis.trainable_variables)
 
-        gen_opt.apply_gradients(zip(gradients_of_generator, generator.trainable_variables))
+        gen_opt.apply_gradients(zip(gradients_of_generator, gen.trainable_variables))
         dis_opt.apply_gradients(zip(gradients_of_discriminator, dis.trainable_variables))
 
 # --------------
