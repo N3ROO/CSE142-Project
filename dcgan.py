@@ -157,9 +157,9 @@ def discriminator_model():
     model.add(tf.keras.layers.Dropout(0.3))
 
     # 256x7x7 TODO: needed?
-    model.add(tf.keras.layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same'))
-    model.add(tf.keras.layers.LeakyReLU())
-    model.add(tf.keras.layers.Dropout(0.3))
+    # model.add(tf.keras.layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same'))
+    # model.add(tf.keras.layers.LeakyReLU())
+    # model.add(tf.keras.layers.Dropout(0.3))
 
     # Flattens the input. Does not affect the batch size. If inputs are shaped
     # (batch,) without a channel dimension, then flattening adds an extra
@@ -249,11 +249,6 @@ def main():
     generator_optimizer = tf.keras.optimizers.Adam(1e-4)
     discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
 
-    # Checkpoints
-    # checkpoint_dir = './training_checkpoints'
-    # checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
-    # checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer, discriminator_optimizer=discriminator_optimizer, generator=generator, discriminator=discriminator)
-
     # Train
     for epoch in range(EPOCHS):
         start = time.time()
@@ -268,10 +263,6 @@ def main():
             )
 
             generate_and_save_images(generator, epoch + 1, WATCHED_SEED)
-
-            # Save the model every 15 epochs
-            # if (epoch + 1) % 15 == 0:
-            #     checkpoint.save(file_prefix = checkpoint_prefix)
 
             LOGGER.info('Epoch %i, %i sec', epoch+1, time.time()-start)
 
