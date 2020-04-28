@@ -67,8 +67,8 @@ def generate_and_save_images(model, epoch, test_input):
         plt.imshow(predictions[i, :, :, 0] * 127.5 + 127.5, cmap='gray')
         plt.axis('off')
 
-    plt.savefig('image_at_epoch_{:04d}.png'.format(epoch))
-    plt.show()
+    plt.savefig('results/image_at_epoch_{:03d}.png'.format(epoch))
+    # plt.show()
 
 
 # --------------
@@ -217,7 +217,7 @@ def train(images, buffer_size, noise_dim, gen, dis, gen_opt, dis_opt, loss_func)
 
 def main():
     # Parameters
-    BUFFER_SIZE = 60000
+    BUFFER_SIZE = 500 # if too big, the GPU may not be good enough
     BATCH_SIZE = 256
     EPOCHS = 10
     NOISE_DIM = 100 # Based on DCGAN paper
@@ -262,13 +262,12 @@ def main():
                 cross_entropy
             )
 
-            generate_and_save_images(generator, epoch + 1, WATCHED_SEED)
+        generate_and_save_images(generator, epoch + 1, WATCHED_SEED)
 
-            LOGGER.info('Epoch %i, %i sec', epoch+1, time.time()-start)
+        LOGGER.info('Epoch %i, %i sec', epoch+1, time.time()-start)
 
     # Generate after the final epoch
     generate_and_save_images(generator, EPOCHS, WATCHED_SEED)
-
 
 
 if __name__ == '__main__':
