@@ -44,7 +44,7 @@ website: [doc nvidia](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/ind
 **Jupyter notebook:**
 - `ipython kernel install --user --name=.venv` install a kernel inside the environment, to use to run in the Jupyter notebook there
 - Run jupyter notebook: `jupyter notebook` (**and not `python -m jupyter notebook`!**)
-- Open `gan.ipynb`. Make sure that the kernel is selected when you open it (**.venv**). To change it, go to "Kernel", and then "Change kernel".
+- Open `dcgan.ipynb`. Make sure that the kernel is selected when you open it (**.venv**). To change it, go to "Kernel", and then "Change kernel".
 
 **Google collab**
 - Simply import the .ipynb file
